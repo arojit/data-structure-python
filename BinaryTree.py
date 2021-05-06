@@ -28,7 +28,59 @@ class BinaryTree:
                     if current is None:
                         parent.right = node
                         return
-                    
+
+    def inorder_traversal(self):
+        current = self.root
+        if current is None:
+            return
+        else:
+            stack = []
+            while current is not None or len(stack) > 0:
+                while current is not None:
+                    stack.append(current)
+                    current = current.left
+
+                current = stack.pop()
+                print(current.data, end=", ")
+                current = current.right
+            print("")
+
+    def preorder_traversal(self):
+        current = self.root
+        if current is None:
+            return
+        else:
+            stack = [current]
+            while len(stack) > 0:
+                current = stack.pop()
+                print(current.data, end=", ")
+
+                if current.right is not None:
+                    stack.append(current.right)
+                if current.left is not None:
+                    stack.append(current.left)
+            print("")
+
+    def postorder_traversal(self):
+        current = self.root
+        if current is None:
+            return
+        else:
+            stack1 = [current]
+            stack2 = []
+            while len(stack1) > 0:
+                current = stack1.pop()
+                stack2.append(current)
+
+                if current.left is not None:
+                    stack1.append(current.left)
+                if current.right is not None:
+                    stack1.append(current.right)
+
+            while len(stack2) > 0:
+                current = stack2.pop()
+                print(current.data, end=", ")
+
 
 if __name__ == '__main__':
     binaryTree = BinaryTree()
@@ -40,3 +92,7 @@ if __name__ == '__main__':
     binaryTree.add(17)
     binaryTree.add(25)
     binaryTree.add(40)
+
+    binaryTree.inorder_traversal()
+    binaryTree.preorder_traversal()
+    binaryTree.postorder_traversal()
