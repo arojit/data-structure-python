@@ -1,4 +1,5 @@
 import array as arr
+import time
 
 
 class SelectionSort:
@@ -33,10 +34,18 @@ if __name__ == '__main__':
     data = [5, 7, 9, 2, 1]
 
     selection_sort = SelectionSort(data)
+    start = time.time()
     selection_sort.sort()
+    end = time.time()
+
+    print("Time Taken :: ", end - start)
 
     bubble_sort = BubbleSort(data)
+    start = time.time()
     bubble_sort.sort()
+    end = time.time()
+
+    print("Time Taken :: ", end - start)
 
 
 
