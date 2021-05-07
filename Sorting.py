@@ -30,6 +30,21 @@ class BubbleSort:
         print(self.data)
 
 
+class InsertionSort:
+    def __init__(self, data_array):
+        self.data = arr.array('i', data_array)
+
+    def sort(self):
+        for i in range(1, len(self.data)):
+            temp = self.data[i]
+            j = i - 1
+            while j >= 0 and temp < self.data[j]:
+                self.data[j+1] = self.data[j]
+                j -= 1
+            self.data[j + 1] = temp
+        print(self.data)
+
+
 if __name__ == '__main__':
     data = [5, 7, 9, 2, 1]
 
@@ -43,6 +58,13 @@ if __name__ == '__main__':
     bubble_sort = BubbleSort(data)
     start = time.time()
     bubble_sort.sort()
+    end = time.time()
+
+    print("Time Taken :: ", end - start)
+
+    insertion_sort = InsertionSort(data)
+    start = time.time()
+    insertion_sort.sort()
     end = time.time()
 
     print("Time Taken :: ", end - start)
