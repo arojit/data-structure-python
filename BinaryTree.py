@@ -80,6 +80,20 @@ class BinaryTree:
             while len(stack2) > 0:
                 current = stack2.pop()
                 print(current.data, end=", ")
+        print("")
+    
+    def level_order_traversal(self):
+        current = self.root
+        queue = [current]
+        while len(queue) > 0:
+            current = queue.pop(0)
+            print(current.data, end=", ")
+
+            if current.left is not None:
+                queue.append(current.left)
+            if current.right is not None:
+                queue.append(current.right)
+        print("")
 
 
 if __name__ == '__main__':
@@ -96,3 +110,4 @@ if __name__ == '__main__':
     binaryTree.inorder_traversal()
     binaryTree.preorder_traversal()
     binaryTree.postorder_traversal()
+    binaryTree.level_order_traversal()
